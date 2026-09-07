@@ -20,12 +20,17 @@
   function initMindTalks() {
     var root = document.querySelector('[data-mind-root]');
     if (!root) return;
-    var lineEls = Array.prototype.slice.call(root.querySelectorAll('[data-mind-line]'));
-    var portraitEls = Array.prototype.slice.call(root.querySelectorAll('[data-mind-portrait]'));
+    var comboEls = Array.prototype.slice.call(root.querySelectorAll('[data-mind-combo]'));
     var conclusionEl = root.querySelector('[data-mind-conclusion]');
 
-    var lines = lineEls.map(function (el) {
-      return { el: el, text: el.getAttribute('data-mind-text') || '', start: parseFloat(el.getAttribute('data-mind-start')), end: parseFloat(el.getAttribute('data-mind-end')) };
+    var combos = comboEls.map(function (el) {
+      var lineEl = el.querySelector('[data-mind-line]');
+      return {
+        el: el, lineEl: lineEl,
+        text: lineEl.getAttribute('data-mind-text') || '',
+        start: parseFloat(el.getAttribute('data-mind-start')),
+        end: parseFloat(el.getAttribute('data-mind-end'))
+      };
     });
     var conclusion = conclusionEl ? {
       el: conclusionEl,
@@ -36,45 +41,41 @@
     } : null;
 
     if (reduceMotion) {
-      lines.forEach(function (l) { l.el.textContent = l.text; });
+      var last = combos[combos.length - 1];
+      combos.forEach(function (c) {
+        c.lineEl.textContent = c === last ? c.text : '';
+        c.el.classList.toggle('is-active', c === last);
+      });
       if (conclusion) conclusion.el.innerHTML = conclusion.html || conclusion.text;
-      portraitEls.forEach(function (p, i) { if (i === lines.length - 1) p.classList.add('is-active'); });
       return;
-    }
-
-    function charsFor(local) {
-      // local in [0,1] within a line's own window: 0-0.5 type, 0.5-0.75 hold, 0.75-1 erase
-      if (local <= 0) return 0;
-      if (local < 0.5) return null; // computed by caller with text length
-      return null;
     }
 
     function render() {
       var p = readP(root);
-      var activeIndex = -1;
 
-      lines.forEach(function (line, i) {
-        var span = line.end - line.start;
-        var local = span > 0 ? (p - line.start) / span : 0;
-        var count;
+      combos.forEach(function (combo) {
+        var span = combo.end - combo.start;
+        var local = span > 0 ? (p - combo.start) / span : 0;
+        var count, active;
         if (local <= 0) {
-          count = 0;
+          count = 0; active = false;
         } else if (local >= 1) {
-          count = 0; // fully erased, next line's turn
+          count = 0; active = false; // fully erased, next combo's turn
         } else if (local < 0.5) {
-          count = Math.ceil((local / 0.5) * line.text.length);
-          activeIndex = i;
+          count = Math.ceil((local / 0.5) * combo.text.length);
+          active = true;
         } else if (local < 0.75) {
-          count = line.text.length;
-          activeIndex = i;
+          count = combo.text.length;
+          active = true;
         } else {
           var erase = (local - 0.75) / 0.25;
-          count = Math.floor(line.text.length * (1 - erase));
-          activeIndex = i;
+          count = Math.floor(combo.text.length * (1 - erase));
+          active = true;
         }
-        count = Math.max(0, Math.min(line.text.length, count));
-        line.el.textContent = line.text.slice(0, count);
-        line.el.classList.toggle('is-typing', local > 0 && local < 1 && count > 0);
+        count = Math.max(0, Math.min(combo.text.length, count));
+        combo.lineEl.textContent = combo.text.slice(0, count);
+        combo.lineEl.classList.toggle('is-typing', local > 0 && local < 1 && count > 0);
+        combo.el.classList.toggle('is-active', active);
       });
 
       if (conclusion) {
@@ -92,10 +93,6 @@
           conclusion.el.classList.add('is-typing');
         }
       }
-
-      portraitEls.forEach(function (el, i) {
-        el.classList.toggle('is-active', i === activeIndex);
-      });
 
       requestAnimationFrame(render);
     }
