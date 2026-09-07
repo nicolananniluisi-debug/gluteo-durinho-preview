@@ -154,7 +154,8 @@
 
 @media (max-width: 860px) {
   .mind-grid { grid-template-columns: 1fr; }
-  .mind-portraits { flex-direction: row; }
+  .mind-portraits { flex-direction: row; gap: var(--sc-3); }
+  .mind-portrait { width: 6.25rem; height: 6.25rem; }
 }
 
 /* ======================================================== 3 · SOLUTION === */
@@ -201,8 +202,15 @@
 .creator-stat-label { font-size: var(--sc-t-xs); color: var(--sc-ink-soft); letter-spacing: var(--sc-track-wide); text-transform: uppercase; }
 
 @media (max-width: 860px) {
-  .creator-grid { grid-template-columns: 1fr; }
-  .creator-photo-wrap { margin-inline: auto; }
+  /* .sc-stage tem altura fixa (100svh) e overflow:clip — empilhado (foto +
+     bio + stats), o conteúdo passa da tela e o align-items:center do stage
+     corta os dois lados igualmente, cortando primeiro a cabeça do Marcel no
+     topo. Ancorar no topo + encolher a foto garante que a cabeça nunca some,
+     mesmo que sobre algum corte (inofensivo) no rodapé em telas bem baixas. */
+  .act-creator .sc-stage { align-items: flex-start; }
+  .creator-grid { padding-top: var(--sc-8); gap: var(--sc-4); grid-template-columns: 1fr; }
+  .creator-photo-wrap { width: 8rem; margin-inline: auto; }
+  .creator-stats { gap: var(--sc-5); margin-top: var(--sc-4); }
 }
 
 /* ========================================================= 5 · DELIVERS = */
@@ -229,7 +237,19 @@
 
 @media (max-width: 860px) {
   .delivers-heading, .delivers-note { flex-basis: 80vw; }
-  .delivers-item { flex-basis: 78vw; }
+  .delivers-item {
+    flex-basis: 82vw;
+    padding: var(--sc-7);
+    gap: var(--sc-5);
+    min-height: 12rem;
+    box-shadow: var(--sc-e2);
+  }
+  .delivers-item svg {
+    width: 3.5rem; height: 3.5rem; padding: 0.75rem;
+    background: color-mix(in oklab, var(--sc-accent) 16%, transparent);
+    border-radius: 50%;
+  }
+  .delivers-item span { font-size: var(--sc-t-lg); }
 }
 
 /* ========================================================= 6 · FINAL === */
@@ -240,6 +260,9 @@
 .final-value sup { font-size: 0.35em; color: var(--sc-accent); vertical-align: super; }
 .final-cta { margin-top: var(--sc-6); }
 .final-trust { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sc-3); margin-top: var(--sc-4); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; }
+/* Separador vira parte do item (não um span solto) para nunca sobrar
+   sozinho no fim de uma linha quando o flex quebra no mobile. */
+.final-trust span:not(:first-child)::before { content: '·'; margin-right: var(--sc-3); }
 .final-guarantee { margin-top: var(--sc-8); display: flex; flex-direction: column; align-items: center; gap: var(--sc-4); }
 .final-badge {
   width: 6rem; height: 6rem; border-radius: 50%; border: 2px solid var(--sc-accent);
