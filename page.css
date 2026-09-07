@@ -278,7 +278,9 @@
    por `flex-start` + padding-top calculado à mão: em telas altas aproxima o
    centro visual de verdade (contando a barra), em telas baixas trava num piso
    que nunca fica embaixo da barra. */
-.act-final .sc-stage {
+.final-stage {
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: flex-start;
   justify-content: center;
