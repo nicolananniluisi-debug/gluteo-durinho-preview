@@ -124,8 +124,25 @@
     requestAnimationFrame(render);
   }
 
+  /* ------------------------------------------------------ pt-BR counts -- */
+  /* scrollcraft.js formata milhar com vírgula ("3,000"); em pt-BR isso lê
+     como "três vírgula zero". O motor é intocável, então trocamos o
+     separador logo depois de cada escrita dele, no mesmo frame. */
+  function initPtBrCounts() {
+    var els = Array.prototype.slice.call(document.querySelectorAll('[data-sc-count]'));
+    if (!els.length) return;
+    function fix(el) {
+      if (el.textContent.indexOf(',') > -1) el.textContent = el.textContent.replace(/,/g, '.');
+    }
+    var mo = new MutationObserver(function (recs) {
+      recs.forEach(function (r) { fix(r.target.nodeType === 3 ? r.target.parentNode : r.target); });
+    });
+    els.forEach(function (el) { fix(el); mo.observe(el, { childList: true, characterData: true, subtree: true }); });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initMindTalks();
     initDeliversRail();
+    initPtBrCounts();
   });
 })();
