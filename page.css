@@ -292,6 +292,8 @@
 .final-value sup { font-size: 0.35em; color: var(--sc-accent); vertical-align: super; }
 .final-cta { margin-top: var(--sc-6); }
 .final-trust { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sc-3); margin-top: var(--sc-4); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; }
+.final-trust span { display: inline-flex; align-items: center; gap: var(--sc-2); }
+.final-trust svg { flex-shrink: 0; color: var(--sc-ink-soft); }
 /* Separador vira parte do item (não um span solto) para nunca sobrar
    sozinho no fim de uma linha quando o flex quebra no mobile. */
 .final-trust span:not(:first-child)::before { content: '·'; margin-right: var(--sc-3); }
