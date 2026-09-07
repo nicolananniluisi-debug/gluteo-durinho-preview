@@ -291,12 +291,18 @@
 .final-value { font-family: var(--sc-font-display); font-size: clamp(3rem, 3vw + 2rem, 5.5rem); margin-top: var(--sc-2); }
 .final-value sup { font-size: 0.35em; color: var(--sc-accent); vertical-align: super; }
 .final-cta { margin-top: var(--sc-6); }
-.final-trust { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sc-3); margin-top: var(--sc-4); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; }
-.final-trust span { display: inline-flex; align-items: center; gap: var(--sc-2); }
+.final-trust { display: flex; flex-wrap: nowrap; justify-content: center; gap: var(--sc-2); margin-top: var(--sc-4); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; }
+.final-trust span { display: inline-flex; align-items: center; gap: var(--sc-1); white-space: nowrap; }
 .final-trust svg { flex-shrink: 0; color: var(--sc-ink-soft); }
 /* Separador vira parte do item (não um span solto) para nunca sobrar
    sozinho no fim de uma linha quando o flex quebra no mobile. */
-.final-trust span:not(:first-child)::before { content: '·'; margin-right: var(--sc-3); }
+.final-trust span:not(:first-child)::before { content: '·'; margin-right: var(--sc-2); }
+/* Abaixo de ~480px as 3 frases + ícones não cabem numa linha só sem
+   ficar ilegível — melhor voltar a quebrar do que estourar a largura
+   da tela ou cortar texto. */
+@media (max-width: 480px) {
+  .final-trust { flex-wrap: wrap; }
+}
 .final-guarantee { margin-top: var(--sc-7); display: flex; flex-direction: column; align-items: center; gap: var(--sc-4); }
 .final-badge {
   width: 6rem; height: 6rem; border-radius: 50%; border: 2px solid var(--sc-accent);
