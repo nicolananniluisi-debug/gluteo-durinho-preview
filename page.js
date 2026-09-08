@@ -61,14 +61,14 @@
           count = 0; active = false;
         } else if (local >= 1) {
           count = 0; active = false; // fully erased, next combo's turn
-        } else if (local < 0.5) {
-          count = Math.ceil((local / 0.5) * combo.text.length);
+        } else if (local < 0.3) {
+          count = Math.ceil((local / 0.3) * combo.text.length);
           active = true;
-        } else if (local < 0.75) {
+        } else if (local < 0.88) {
           count = combo.text.length;
           active = true;
         } else {
-          var erase = (local - 0.75) / 0.25;
+          var erase = (local - 0.88) / 0.12;
           count = Math.floor(combo.text.length * (1 - erase));
           active = true;
         }
