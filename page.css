@@ -92,9 +92,11 @@
   border-radius: var(--sc-r-lg);
   box-shadow: var(--sc-e3);
 }
+/* height:auto é obrigatório: o atributo height="1278" da <img> vira dica
+   presentacional (height:1278px) e aspect-ratio só age com height auto. */
 .hero-photo__mid {
   position: relative; z-index: 1;
-  width: 100%; aspect-ratio: 3/4; object-fit: contain; object-position: bottom center;
+  width: 100%; height: auto; aspect-ratio: 3/4; object-fit: contain; object-position: bottom center;
 }
 .hero-price {
   position: absolute; z-index: 2; bottom: -1.25rem; right: -0.25rem;
@@ -211,7 +213,7 @@
   background: linear-gradient(165deg, color-mix(in oklab, var(--sc-accent) 18%, var(--sc-surface)), var(--sc-surface));
   border-radius: var(--sc-r-lg);
 }
-.creator-photo { position: relative; z-index: 1; width: 100%; aspect-ratio: 3/4; object-fit: contain; object-position: bottom center; }
+.creator-photo { position: relative; z-index: 1; width: 100%; height: auto; aspect-ratio: 3/4; object-fit: contain; object-position: bottom center; }
 .creator-label { color: var(--sc-ink-soft); font-weight: 600; }
 .creator-name { font-size: var(--sc-t-3xl); text-transform: uppercase; margin-top: var(--sc-2); }
 .creator-bio { margin-top: var(--sc-4); color: var(--sc-ink-soft); max-width: 52ch; }
@@ -228,7 +230,9 @@
      topo. Ancorar no topo + encolher a foto garante que a cabeça nunca some,
      mesmo que sobre algum corte (inofensivo) no rodapé em telas bem baixas. */
   .act-creator .sc-stage { align-items: flex-start; }
-  .creator-grid { padding-top: var(--sc-8); gap: var(--sc-4); grid-template-columns: 1fr; }
+  /* +1.5rem: a barra fixa cresceu para ~77px (CTA de 44px) e a cabeça do
+     Marcel, com o parallax, nascia 23px por baixo dela. */
+  .creator-grid { padding-top: calc(var(--sc-8) + 1.5rem); gap: var(--sc-4); grid-template-columns: 1fr; }
   .creator-photo-wrap { width: 8rem; margin-inline: auto; }
   .creator-stats { gap: var(--sc-5); margin-top: var(--sc-4); }
 }
@@ -304,7 +308,7 @@
   /* Quebrando em 2 linhas, o "·" do item que abre a 2ª linha ficava órfão no
      início dela. Abaixo de 480px o separador some e o gap faz o trabalho. */
   .final-trust { flex-wrap: wrap; gap: var(--sc-1) var(--sc-4); }
-  .final-trust span:not(:first-child)::before { content: none; margin-right: 0; }
+  .final-trust span:not(:first-child)::before { content: none; }
 }
 .final-guarantee { margin-top: var(--sc-7); display: flex; flex-direction: column; align-items: center; gap: var(--sc-4); }
 .final-badge {
