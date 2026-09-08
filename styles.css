@@ -1,0 +1,854 @@
+/* ==========================================================================
+   Font patch: Anton's Ê/ê/Â/â/Ô/ô glyphs render with the circumflex mark
+   detached and mispositioned. Substitute a correctly-hinted glyph from
+   Poppins Bold (already loaded) for just those codepoints; every other
+   character keeps rendering from the real Anton face.
+   ========================================================================== */
+@font-face {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLCz7Z1xlFQ.woff2) format('woff2');
+  unicode-range: U+00CA, U+00EA, U+00C2, U+00E2, U+00D4, U+00F4;
+}
+
+/* ==========================================================================
+   Reset
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ==========================================================================
+   Design tokens
+   ========================================================================== */
+:root {
+  /* Cores */
+  --color-bg-dark: #0e0e0e;
+  --color-bg-card-dark: #1a1a1a;
+  --color-bg-light: #ffffff;
+  --color-accent: #ec1560;
+  --color-accent-deep: #b3104a;
+  --color-accent-bright: #f5367f;
+  --color-cta: #2f7f39;
+  --color-cta-hover: #276b30;
+  --color-text-dark: #141414;
+  --color-text-body: #6b6b6b;
+  --color-text-light: #f5f5f5;
+  --color-text-muted-light: #b3b3b3;
+  --color-check: #3fa34a;
+  --color-callout-bg: #fdeef2;
+  --color-border-light: #ececec;
+
+  /* Espaçamento */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4rem;
+  --space-8: 6rem;
+}
+
+/* ==========================================================================
+   Layout base
+   ========================================================================== */
+.container {
+  max-width: 740px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* ==========================================================================
+   Componentes reutilizáveis
+   ========================================================================== */
+
+/* Botão CTA */
+.btn-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  background-color: var(--color-cta);
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  padding: 1rem 1.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.btn-cta:hover {
+  background-color: var(--color-cta-hover);
+}
+
+.btn-cta-icon {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: var(--color-cta);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Badge rosa */
+.badge-pink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-accent-deep);
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.4rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+/* Placeholder de imagem */
+.img-placeholder {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Utilitários de cor de ícone (herdada via currentColor) */
+.icon-accent {
+  color: var(--color-accent);
+}
+
+.icon-muted {
+  color: var(--color-text-muted-light);
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero {
+  background-color: var(--color-bg-dark);
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-7);
+}
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.hero-text .badge-pink {
+  margin-bottom: var(--space-4);
+}
+
+.hero-title-line {
+  display: block;
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(2.75rem, 9vw, 4.5rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.hero-title-accent {
+  color: var(--color-accent);
+}
+
+.hero-lead {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color: var(--color-text-light);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: var(--space-4);
+}
+
+.hero-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.hero-feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+  flex: 1;
+  min-width: 70px;
+}
+
+.hero-feature-label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  color: var(--color-text-light);
+  letter-spacing: 0.02em;
+}
+
+.hero-text .btn-cta {
+  margin-top: var(--space-5);
+}
+
+.hero-trust {
+  margin-top: var(--space-3);
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.hero-trust-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.hero-trust-item span {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--color-text-muted-light);
+}
+
+/* Coluna direita: foto (recortada) "saindo" de um card + preço sobreposto */
+.hero-photo-wrap {
+  position: relative;
+}
+
+.hero-photo-card {
+  position: absolute;
+  overflow: hidden;
+  z-index: 0;
+  inset: 14% 6% 0 6%;
+  background: linear-gradient(165deg, #241016, var(--color-bg-card-dark));
+  border-radius: var(--space-3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* Shader: varredura cônica rotativa nas cores da marca, clipada dentro
+   do card (raio maior que a caixa, ancorado no centro via transform) */
+.hero-photo-card::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    var(--color-accent-deep) 40deg,
+    transparent 100deg,
+    var(--color-accent-bright) 200deg,
+    transparent 260deg,
+    transparent 360deg
+  );
+  opacity: 0.38;
+  filter: blur(8px);
+  animation: hero-photo-shader-spin 9s linear infinite;
+}
+
+@keyframes hero-photo-shader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo-card::before {
+    animation: none;
+  }
+}
+
+.hero-photo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+.hero-price-card {
+  position: absolute;
+  z-index: 2;
+  bottom: -1.5rem;
+  right: -0.5rem;
+  background-color: var(--color-bg-card-dark);
+  border-radius: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.hero-price-card-label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: var(--color-text-muted-light);
+  letter-spacing: 0.05em;
+}
+
+.hero-price-card-value {
+  font-family: 'Anton', sans-serif;
+  color: #ffffff;
+  font-size: 2.5rem;
+}
+
+.hero-price-card-value sup {
+  font-size: 1rem;
+  vertical-align: super;
+  color: var(--color-accent-bright);
+}
+
+.hero-price-card-note {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 0.7rem;
+  color: var(--color-text-muted-light);
+  margin-top: var(--space-2);
+}
+
+@media (max-width: 640px) {
+  .hero .container {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-price-card {
+    position: relative;
+    margin-top: -2rem;
+    margin-inline: auto;
+    width: fit-content;
+  }
+}
+
+/* ==========================================================================
+   Mind Talks Section
+   ========================================================================== */
+.mind-talks {
+  background-color: var(--color-bg-light);
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-7);
+}
+
+.mind-talks-title {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: var(--space-6);
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--color-text-dark);
+}
+
+.mind-talks-title-accent {
+  color: var(--color-accent);
+}
+
+.mind-talks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.mind-talks-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.mind-talks-card .img-placeholder {
+  aspect-ratio: 1/1;
+  border-radius: var(--space-2);
+}
+
+.mind-talks-card-content {
+  padding-top: var(--space-3);
+  text-align: center;
+}
+
+.mind-talks-quote {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.3;
+  color: var(--color-accent-deep);
+  margin-bottom: var(--space-2);
+}
+
+.mind-talks-caption {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--color-text-body);
+}
+
+.mind-talks-conclusion {
+  margin-top: var(--space-6);
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--color-text-dark);
+}
+
+.mind-talks-conclusion strong {
+  color: var(--color-accent-deep);
+}
+
+@media (max-width: 640px) {
+  .mind-talks-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Solution Section
+   ========================================================================== */
+.solution {
+  background-color: var(--color-bg-light);
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-7);
+}
+
+.solution-container {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.solution-image-wrap {
+  order: -1;
+}
+
+.solution-image-wrap .img-placeholder {
+  aspect-ratio: 4/5;
+  border-radius: var(--space-3);
+}
+
+.solution-title {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(1.4rem, 3.5vw, 1.6rem);
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--color-text-dark);
+}
+
+.solution-title span {
+  color: var(--color-accent);
+}
+
+.solution-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.solution-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.solution-check {
+  color: var(--color-check);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.solution-item span {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--color-text-dark);
+}
+
+.solution-callout {
+  margin-top: var(--space-5);
+  background-color: var(--color-callout-bg);
+  border-radius: var(--space-3);
+  padding: var(--space-4);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.solution-lightbulb {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.solution-callout p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--color-text-dark);
+}
+
+@media (max-width: 640px) {
+  .solution-container {
+    grid-template-columns: 1fr;
+  }
+
+  .solution-image-wrap {
+    order: 0;
+  }
+}
+
+/* ==========================================================================
+   Creator Section
+   ========================================================================== */
+.creator {
+  background-color: var(--color-bg-dark);
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-7);
+}
+
+.creator-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+/* Foto (recortada) "saindo" de um card, mesmo tratamento do hero */
+.creator-photo-wrap {
+  position: relative;
+}
+
+.creator-photo-card {
+  position: absolute;
+  z-index: 0;
+  inset: 22% 8% 0 8%;
+  background: linear-gradient(165deg, #241016, var(--color-bg-card-dark));
+  border-radius: var(--space-3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.creator-photo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+.creator-label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  color: var(--color-text-light);
+}
+
+.creator-name {
+  font-family: 'Anton', sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  color: var(--color-accent);
+  margin-top: var(--space-2);
+}
+
+.creator-bio-1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--color-text-light);
+  margin-top: var(--space-4);
+}
+
+.creator-bio-2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--color-text-muted-light);
+  margin-top: var(--space-3);
+  line-height: 1.5;
+}
+
+.creator-stats {
+  display: flex;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+  margin-top: var(--space-5);
+}
+
+.creator-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.creator-stat-icon {
+  color: var(--color-accent);
+}
+
+.creator-stat-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.creator-stat-number {
+  font-family: 'Anton', sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--color-accent-bright);
+}
+
+.creator-stat-label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  color: var(--color-text-muted-light);
+}
+
+.creator-bio-3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--color-text-muted-light);
+  margin-top: var(--space-4);
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .creator-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Delivers Section
+   ========================================================================== */
+.delivers {
+  background-color: var(--color-bg-light);
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-7);
+}
+
+.delivers-container {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.delivers-title {
+  font-family: 'Anton', sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(1.4rem, 4vw, 1.9rem);
+  line-height: 1.15;
+  color: var(--color-text-dark);
+}
+
+.delivers-title-accent {
+  color: var(--color-accent-deep);
+}
+
+.delivers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4) var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.delivers-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.delivers-icon {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.delivers-item span {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: var(--color-text-dark);
+}
+
+@media (max-width: 640px) {
+  .delivers-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .delivers-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Final CTA Section
+   ========================================================================== */
+.final-cta {
+  background-color: var(--color-bg-dark);
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-7);
+}
+
+.final-cta .container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.final-cta-price {
+  text-align: center;
+}
+
+.final-cta-label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted-light);
+}
+
+.final-cta-value {
+  font-family: 'Anton', sans-serif;
+  color: #ffffff;
+  font-size: 2rem;
+  margin-top: var(--space-2);
+}
+
+.final-cta-value sup {
+  font-size: 0.9rem;
+  vertical-align: super;
+  color: var(--color-accent-bright);
+}
+
+.final-cta-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.final-cta-button .btn-cta {
+  width: 100%;
+}
+
+.final-cta-trust {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  color: var(--color-text-muted-light);
+}
+
+.final-cta-guarantee-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 210px;
+}
+
+.final-cta-badge {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--color-accent-deep);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-inline: auto;
+}
+
+.final-cta-badge-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+.final-cta-badge-number {
+  font-family: 'Anton', sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #ffffff;
+  line-height: 1.15;
+}
+
+.final-cta-guarantee-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color: var(--color-text-muted-light);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  max-width: 220px;
+}
+
+@media (max-width: 640px) {
+  .final-cta .container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: var(--space-4);
+  }
+
+  .final-cta-button .btn-cta {
+    width: 100%;
+  }
+
+  .final-cta-guarantee-wrap {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .final-cta-guarantee-text {
+    margin-top: var(--space-3);
+  }
+}

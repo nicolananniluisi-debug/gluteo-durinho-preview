@@ -1,293 +1,406 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Projeto Glúteo Durinho | Marcel Rassy</title>
-<meta name="description" content="Programa de treino de Marcel Rassy focado em glúteos: exercícios selecionados, aulas em vídeo e acesso vitalício por R$ 67, pagamento único.">
-<meta name="theme-color" content="#0e0e0e">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="pt_BR">
-<meta property="og:site_name" content="Projeto Glúteo Durinho">
-<meta property="og:title" content="Projeto Glúteo Durinho | Marcel Rassy">
-<meta property="og:description" content="Programa de treino de Marcel Rassy focado em glúteos: exercícios selecionados, aulas em vídeo e acesso vitalício por R$ 67, pagamento único.">
-<meta property="og:url" content="https://nicolananniluisi-debug.github.io/gluteo-durinho-preview/">
-<meta property="og:image" content="https://nicolananniluisi-debug.github.io/gluteo-durinho-preview/assets/og.jpg">
-<meta property="og:image:width" content="832">
-<meta property="og:image:height" content="435">
-<meta property="og:image:alt" content="Mulher em roupa de treino em uma academia">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230e0e0e'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%23ec1560'>G</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Poppins:wght@400;600;700&amp;display=swap">
-<link rel="stylesheet" href="scrollcraft.css">
-<link rel="stylesheet" href="page.css">
-<style>
-  :root {
-    --sc-canvas:     #0e0e0e;
-    --sc-surface:    #1a1a1a;
-    --sc-ink:        #f5f5f5;
-    --sc-ink-soft:   #b3b3b3;
-    --sc-accent:     #ec1560;
-    --sc-accent-deep: #b3104a;
-    --sc-accent-ink: #ffffff;
-    --sc-accent-text: #f4477f;   /* rosa para TEXTO PEQUENO: 5.0:1 sobre surface, 5.6:1 sobre canvas */
-    --sc-font-mono:  'Poppins', system-ui, sans-serif; /* o kit pede Geist Mono, que não carregamos: rótulos caíam num mono do sistema */
-    --sc-font-display: 'Anton', system-ui, sans-serif;
-    --sc-font-text:    'Poppins', system-ui, sans-serif;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projeto Glúteo Durinho — programa de treino de Marcel Rassy focado em glúteos.">
+  <title>Projeto Glúteo Durinho</title>
+  <meta name="theme-color" content="#0e0e0e">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Projeto Glúteo Durinho">
+  <meta property="og:title" content="Projeto Glúteo Durinho | Marcel Rassy">
+  <meta property="og:description" content="Programa de treino de Marcel Rassy focado em glúteos: exercícios selecionados, aulas em vídeo e acesso vitalício por R$ 67, pagamento único.">
+  <meta property="og:url" content="https://nicolananniluisi-debug.github.io/gluteo-durinho-preview/">
+  <meta property="og:image" content="https://nicolananniluisi-debug.github.io/gluteo-durinho-preview/assets/og.jpg">
+  <meta property="og:image:width" content="832">
+  <meta property="og:image:height" content="435">
+  <meta property="og:image:alt" content="Mulher em roupa de treino em uma academia">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230e0e0e'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%23ec1560'>G</text></svg>">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Poppins:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getSurveys getActiveMatchingSurveys captureException".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_oPv3bjbytSLNdqhcqEBy5ppU9dKHuz9dzEwzsSJHDkMm', { api_host: 'https://us.i.posthog.com', person_profiles: 'always' })
+  </script>
 </head>
 <body>
 
-<span data-sc-progress></span>
-<div class="sc-grain" aria-hidden="true"></div>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-text">
+        <span class="badge-pink">PROJETO</span>
 
-<header class="site-bar">
-  <span class="site-bar__mark">GLÚTEO DURINHO</span>
-  <a class="site-bar__cta" href="#preco">Quero começar</a>
-</header>
-
-<main id="top">
-
-  <!-- 1 · HERO — flow. Confronto. kinetic headline + parallax em 3 camadas. -->
-  <section class="act-hero" data-sc-act="flow" data-sc-drift="#0e0e0e">
-    <div class="hero-grid sc-wrap">
-      <div class="hero-copy" data-sc-in data-sc-stagger="70">
-        <span class="hero-badge sc-label">PROJETO</span>
-
-        <h1 class="sc-display hero-title">
-          GLÚTEO<br><span class="is-accent">DURINHO</span>
+        <h1>
+          <span class="hero-title-line">GLÚTEO</span>
+          <span class="hero-title-line hero-title-accent">DURINHO</span>
         </h1>
 
-        <p class="hero-lede">O programa de treino focado para você conquistar um <strong>glúteo mais firme, redondo e empinado</strong>, treinando com estratégia e sem perder tempo.</p>
+        <p class="hero-lead">O programa de treino focado para você conquistar um <strong style="color: var(--color-accent-bright)">glúteo mais firme, redondo e empinado</strong> – treinando com estratégia e sem perder tempo.</p>
 
         <div class="hero-features">
           <div class="hero-feature">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
-            <span>Exercícios selecionados</span>
+            <svg class="icon-accent" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <circle cx="12" cy="12" r="5"/>
+              <circle cx="12" cy="12" r="1"/>
+            </svg>
+            <span class="hero-feature-label">EXERCÍCIOS SELECIONADOS</span>
           </div>
           <div class="hero-feature">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-4 0-7 3-7 8 0 6 3 10 7 10s7-4 7-10c0-5-3-8-7-8z"/><path d="M12 5v16"/></svg>
-            <span>Foco total no glúteo</span>
+            <svg class="icon-accent" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3c-4 0-7 3-7 8 0 6 3 10 7 10s7-4 7-10c0-5-3-8-7-8z"/>
+              <path d="M12 5v16"/>
+            </svg>
+            <span class="hero-feature-label">FOCO TOTAL NO GLÚTEO</span>
           </div>
           <div class="hero-feature">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5v-7z" fill="currentColor" stroke="none"/></svg>
-            <span>Explicações em vídeo</span>
+            <svg class="icon-accent" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M10 8.5l6 3.5-6 3.5v-7z" fill="currentColor" stroke="none"/>
+            </svg>
+            <span class="hero-feature-label">EXPLICAÇÕES EM VÍDEO</span>
           </div>
           <div class="hero-feature">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M8 3v4"/><path d="M16 3v4"/></svg>
-            <span>Treine onde e quando quiser</span>
+            <svg class="icon-accent" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="16" rx="2"/>
+              <path d="M3 9h18"/>
+              <path d="M8 3v4"/>
+              <path d="M16 3v4"/>
+            </svg>
+            <span class="hero-feature-label">TREINE ONDE E QUANDO QUISER</span>
           </div>
         </div>
 
-        <a class="cta hero-cta" href="#preco" data-sc-rise="0">
-          Quero começar agora!
-          <span class="cta__icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+        <a href="#preco" class="btn-cta">
+          QUERO COMEÇAR AGORA!
+          <span class="btn-cta-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14"/>
+              <path d="M13 6l6 6-6 6"/>
+            </svg>
           </span>
         </a>
 
         <div class="hero-trust">
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> Acesso imediato</span>
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg> Pagamento 100% seguro</span>
-        </div>
-      </div>
-
-      <div class="hero-photo">
-        <div class="hero-photo__back" data-sc-parallax="-0.6" aria-hidden="true"></div>
-        <img class="hero-photo__mid" data-sc-parallax="0.25" src="assets/marcel-photo.webp" width="847" height="1278" fetchpriority="high" decoding="async" alt="Marcel Rassy, personal trainer, sem camisa e tatuado, em pé com as mãos na cintura">
-        <div class="hero-price" data-sc-parallax="0.7">
-          <p class="hero-price__label">Acesso completo por apenas</p>
-          <p class="hero-price__value">R$ 67<sup>,00</sup></p>
-          <p class="hero-price__note">Pagamento único</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 2 · 3 CONVERSAS MENTAIS — pin. Exposição/Tensão. Signature move. -->
-  <section class="act-mind" data-sc-act="pin" data-sc-span="5.4" data-sc-drift="#171018" data-mind-root>
-    <div data-sc-stage>
-      <div class="mind-wrap">
-        <div class="mind-copy" data-sc-cue="0 1 0 0.05">
-          <p class="mind-label sc-label">3 conversas mentais que você já teve sobre seu glúteo</p>
-          <ul class="sr-only">
-            <li>“Meu glúteo continua flácido.”</li>
-            <li>“Não sei quais exercícios eu deveria fazer.”</li>
-            <li>“Quero colocar uma roupa e me sentir melhor.”</li>
-          </ul>
-          <p class="sr-only">O problema não é falta de esforço. É falta de estratégia.</p>
-
-          <div class="mind-combos" aria-hidden="true">
-            <div class="mind-combo" data-mind-combo data-mind-start="0" data-mind-end="0.23">
-              <div class="mind-photo"><img src="assets/testimonial-1.webp" width="640" height="640" decoding="async" alt="Mulher se olhando no espelho de uma academia"></div>
-              <p class="mind-line"><span class="mind-quote">&ldquo;</span><span class="mind-typed" data-mind-line data-mind-text="Meu glúteo continua flácido."></span><span class="mind-quote">&rdquo;</span></p>
-            </div>
-            <div class="mind-combo" data-mind-combo data-mind-start="0.25" data-mind-end="0.48">
-              <div class="mind-photo"><img src="assets/testimonial-2.webp" width="640" height="640" loading="lazy" decoding="async" alt="Mulher fazendo exercício de glúteo em aparelho de academia"></div>
-              <p class="mind-line"><span class="mind-quote">&ldquo;</span><span class="mind-typed" data-mind-line data-mind-text="Não sei quais exercícios eu deveria fazer."></span><span class="mind-quote">&rdquo;</span></p>
-            </div>
-            <div class="mind-combo" data-mind-combo data-mind-start="0.50" data-mind-end="0.72">
-              <div class="mind-photo"><img src="assets/testimonial-3.webp" width="640" height="640" loading="lazy" decoding="async" alt="Mulher se olhando no espelho, refletindo o corpo que deseja alcançar"></div>
-              <p class="mind-line"><span class="mind-quote">&ldquo;</span><span class="mind-typed" data-mind-line data-mind-text="Quero colocar uma roupa e me sentir melhor."></span><span class="mind-quote">&rdquo;</span></p>
-            </div>
+          <div class="hero-trust-item">
+            <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="5" y="11" width="14" height="9" rx="2"/>
+              <path d="M8 11V8a4 4 0 0 1 8 0v3"/>
+            </svg>
+            <span>ACESSO IMEDIATO</span>
           </div>
+          <div class="hero-trust-item">
+            <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+            <span>PAGAMENTO 100% SEGURO</span>
+          </div>
+        </div>
+      </div>
 
-          <p class="mind-conclusion" aria-hidden="true"
-             data-mind-conclusion
-             data-mind-text="O problema não é falta de esforço. É falta de estratégia."
-             data-mind-html="O problema não é falta de esforço. <strong>É falta de estratégia.</strong>"
-             data-mind-start="0.76" data-mind-end="0.86"></p>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-card" aria-hidden="true"></div>
+        <img class="hero-photo" src="assets/marcel-photo.webp" alt="Marcel Rassy, personal trainer, sem camisa e tatuado, em pé com as mãos na cintura">
+
+        <div class="hero-price-card">
+          <p class="hero-price-card-label">ACESSO COMPLETO</p>
+          <p class="hero-price-card-label">POR APENAS</p>
+          <p class="hero-price-card-value">R$ 67<sup>,00</sup></p>
+          <p class="hero-price-card-note">PAGAMENTO ÚNICO</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3 · A SOLUÇÃO — flow, o PICO. Alívio. reveal="iris", único da página. -->
-  <section class="act-solution" data-sc-act="flow" data-sc-drift="#1a1a1a">
-    <div class="solution-grid sc-wrap">
-      <figure class="solution-media" data-sc-reveal="iris" data-sc-reveal-at="0.08 0.4">
-        <img src="assets/solution-woman.webp" width="832" height="1040" loading="lazy" decoding="async" alt="Mulher fazendo avanço (lunge) com halteres em academia">
-      </figure>
+  <section class="mind-talks">
+    <div class="container">
+      <h2 class="mind-talks-title">
+        <span>3 CONVERSAS MENTAIS QUE VOCÊ</span>
+        <span class="mind-talks-title-accent">JÁ TEVE SOBRE SEU GLÚTEO</span>
+      </h2>
 
-      <div class="solution-copy" data-sc-in data-sc-stagger="70">
-        <h2 class="sc-display solution-title">
-          A SOLUÇÃO: TREINAR COM <span class="is-accent">FOCO</span><br>
-          E COM UM PROGRAMA <span class="is-accent">ORGANIZADO</span>
+      <div class="mind-talks-grid">
+        <div class="mind-talks-card">
+          <img class="img-placeholder" src="assets/testimonial-1.webp" alt="Mulher se olhando no espelho de uma academia">
+          <div class="mind-talks-card-content">
+            <p class="mind-talks-quote">"Meu glúteo continua flácido."</p>
+            <p class="mind-talks-caption">Você treina, se esforça, mas ainda sente que falta algo.</p>
+          </div>
+        </div>
+
+        <div class="mind-talks-card">
+          <img class="img-placeholder" src="assets/testimonial-2.webp" alt="Mulher fazendo exercício de glúteo em aparelho de academia">
+          <div class="mind-talks-card-content">
+            <p class="mind-talks-quote">"Não sei quais exercícios eu deveria fazer."</p>
+            <p class="mind-talks-caption">São tantas informações que fica difícil saber o que realmente funciona.</p>
+          </div>
+        </div>
+
+        <div class="mind-talks-card">
+          <img class="img-placeholder" src="assets/testimonial-3.webp" alt="Mulher se olhando no espelho, refletindo o corpo que deseja alcançar">
+          <div class="mind-talks-card-content">
+            <p class="mind-talks-quote">"Quero colocar uma roupa e me sentir melhor."</p>
+            <p class="mind-talks-caption">Vestir uma calça, um vestido ou um biquíni e gostar do que vê.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="mind-talks-conclusion">
+        O problema não é falta de esforço.
+        <strong>É falta de estratégia.</strong>
+      </p>
+    </div>
+  </section>
+
+  <section class="solution">
+    <div class="container solution-container">
+      <div class="solution-image-wrap">
+        <img class="img-placeholder" src="assets/solution-woman.webp" alt="Mulher fazendo avanço (lunge) com halteres em academia">
+      </div>
+
+      <div class="solution-content">
+        <h2 class="solution-title">
+          A SOLUÇÃO: TREINAR COM <span>FOCO</span><br>
+          E COM UM PROGRAMA <span>ORGANIZADO</span>
         </h2>
 
         <div class="solution-list">
-          <div class="solution-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Exercícios selecionados para glúteos</span></div>
-          <div class="solution-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Diferentes movimentos e ângulos</span></div>
-          <div class="solution-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Orientação para melhorar sua execução</span></div>
-          <div class="solution-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Estratégias para aumentar o estímulo muscular</span></div>
-          <div class="solution-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Programa organizado para você parar de improvisar</span></div>
-          <div class="solution-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Acesso para treinar onde e quando quiser</span></div>
+          <div class="solution-item">
+            <svg class="solution-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Exercícios selecionados para glúteos</span>
+          </div>
+          <div class="solution-item">
+            <svg class="solution-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Diferentes movimentos e ângulos</span>
+          </div>
+          <div class="solution-item">
+            <svg class="solution-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Orientação para melhorar sua execução</span>
+          </div>
+          <div class="solution-item">
+            <svg class="solution-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Estratégias para aumentar o estímulo muscular</span>
+          </div>
+          <div class="solution-item">
+            <svg class="solution-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Programa organizado para você parar de improvisar</span>
+          </div>
+          <div class="solution-item">
+            <svg class="solution-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Acesso para treinar onde e quando quiser</span>
+          </div>
         </div>
 
         <div class="solution-callout">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"></path><path d="M10 21h4"></path><path d="M12 3a6 6 0 0 0-3.5 10.9c.53.46.87 1.12.9 1.85.02.4.35.75.76.75h3.68c.41 0 .74-.35.76-.75.03-.73.37-1.39.9-1.85A6 6 0 0 0 12 3Z"></path></svg>
+          <svg class="solution-lightbulb" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 18h6"></path>
+            <path d="M10 21h4"></path>
+            <path d="M12 3a6 6 0 0 0-3.5 10.9c.53.46.87 1.12.9 1.85.02.4.35.75.76.75h3.68c.41 0 .74-.35.76-.75.03-.73.37-1.39.9-1.85A6 6 0 0 0 12 3Z"></path>
+          </svg>
           <p>Você não precisa perder tempo pesquisando exercícios. Abre o programa e treina!</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4 · QUEM ENSINA — pin. Confiança. count real (25/3.000/26). -->
-  <section class="act-creator" data-sc-act="pin" data-sc-span="1.9" data-sc-drift="#141014">
-    <div data-sc-stage>
-      <div class="creator-grid sc-wrap">
-        <div class="creator-photo-wrap" data-sc-parallax="0.2">
-          <div class="creator-photo-card" aria-hidden="true"></div>
-          <img class="creator-photo" src="assets/marcel-photo.webp" width="847" height="1278" loading="lazy" decoding="async" alt="Marcel Rassy, personal trainer especialista em treinamento feminino, sem camisa e tatuado">
-        </div>
+  <section class="creator">
+    <div class="container creator-container">
+      <div class="creator-photo-wrap">
+        <div class="creator-photo-card" aria-hidden="true"></div>
+        <img class="creator-photo" src="assets/marcel-photo.webp" alt="Marcel Rassy, personal trainer especialista em treinamento feminino, sem camisa e tatuado">
+      </div>
 
-        <div class="creator-copy" data-sc-cue="0 1 0">
-          <p class="creator-label sc-label">QUEM VAI TE ENSINAR?</p>
-          <h2 class="sc-display creator-name">MARCEL RASSY</h2>
-          <p class="creator-bio">Professor e personal trainer há mais de 25 anos, especialista em treinamento feminino. Durante minha carreira, já acompanhei milhares de mulheres buscando emagrecimento, definição e transformação corporal.</p>
+      <div class="creator-content">
+        <p class="creator-label">QUEM VAI TE ENSINAR?</p>
+        <h2 class="creator-name">MARCEL RASSY</h2>
 
-          <div class="creator-stats">
-            <div class="creator-stat">
-              <span class="creator-stat-number"><span data-sc-count="0 25">0</span>&nbsp;anos</span>
-              <span class="creator-stat-label">De experiência</span>
-            </div>
-            <div class="creator-stat">
-              <span class="creator-stat-number"><span data-sc-count="0 3,000">0</span></span>
-              <span class="creator-stat-label">Alunas</span>
-            </div>
-            <div class="creator-stat">
-              <span class="creator-stat-number"><span data-sc-count="0 26">0</span></span>
-              <span class="creator-stat-label">Países</span>
+        <p class="creator-bio-1">Professor e personal trainer há mais de 25 anos, especialista em treinamento feminino.</p>
+
+        <p class="creator-bio-2">Durante minha carreira, já acompanhei milhares de mulheres buscando emagrecimento, definição e transformação corporal.</p>
+
+        <div class="creator-stats">
+          <div class="creator-stat">
+            <svg class="creator-stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2"/>
+              <path d="M16 2v4"/>
+              <path d="M8 2v4"/>
+              <path d="M3 10h18"/>
+            </svg>
+            <div class="creator-stat-text">
+              <span class="creator-stat-number">+25 ANOS</span>
+              <span class="creator-stat-label">DE EXPERIÊNCIA</span>
             </div>
           </div>
 
-          <p class="creator-bio">Toda essa experiência agora em um programa acessível para você transformar o seu glúteo.</p>
+          <div class="creator-stat">
+            <svg class="creator-stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <div class="creator-stat-text">
+              <span class="creator-stat-number">+3.000 ALUNOS</span>
+            </div>
+          </div>
+
+          <div class="creator-stat">
+            <svg class="creator-stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <ellipse cx="12" cy="12" rx="3" ry="8"/>
+              <path d="M2 12h20"/>
+            </svg>
+            <div class="creator-stat-text">
+              <span class="creator-stat-number">+26 PAÍSES</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="creator-bio-3">Toda essa experiência agora em um programa acessível para você transformar o seu glúteo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="delivers">
+    <div class="container delivers-container">
+      <div class="delivers-mockups" style="position: relative; display: flex; justify-content: center;">
+        <img class="img-placeholder" src="assets/mockup-tablet.svg" alt="Tela do app mostrando lista de treinos: Treino 1 Foco em Força, Treino 2 Foco em Contração, Treino 3 Foco em Tonificação, Aulas Extras" style="aspect-ratio: 3/4; width: 70%; border-radius: var(--space-2);">
+        <img class="img-placeholder" src="assets/mockup-phone.svg" alt="Tela de celular mostrando a capa do app Projeto Glúteo Durinho" style="aspect-ratio: 9/19.5; width: 40%; border-radius: var(--space-3); position: absolute; left: -5%; bottom: -8%; box-shadow: 0 12px 24px rgba(0,0,0,0.25);">
+      </div>
+
+      <div class="delivers-content">
+        <h2 class="delivers-title">O QUE VOCÊ RECEBE NO<br><span class="delivers-title-accent">PROJETO GLÚTEO DURINHO</span></h2>
+
+        <div class="delivers-grid">
+          <div class="delivers-item">
+            <svg class="delivers-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="23 7 16 12 23 17 23 7"/>
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+            </svg>
+            <span>Aulas completas em vídeo</span>
+          </div>
+
+          <div class="delivers-item">
+            <svg class="delivers-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3l7 4v2l-7-4-7 4v-2l7-4z"/>
+              <path d="M5 9v8h14V9"/>
+              <path d="M12 6v3"/>
+            </svg>
+            <span>Orientações de execução e estratégia</span>
+          </div>
+
+          <div class="delivers-item">
+            <svg class="delivers-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="10" width="3" height="4" rx="0.5"/>
+              <rect x="19" y="10" width="3" height="4" rx="0.5"/>
+              <path d="M5 12h14"/>
+            </svg>
+            <span>Exercícios selecionados para glúteos</span>
+          </div>
+
+          <div class="delivers-item">
+            <svg class="delivers-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+              <path d="M12 18h.01"/>
+            </svg>
+            <span>Acesso pelo celular, tablet ou computador</span>
+          </div>
+
+          <div class="delivers-item">
+            <svg class="delivers-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="5" y="3" width="2" height="3" rx="0.5"/>
+              <rect x="6" y="6" width="12" height="14" rx="2"/>
+              <path d="M8 10h8"/>
+              <path d="M8 13h8"/>
+              <path d="M8 16h5"/>
+            </svg>
+            <span>Programas de treino organizados</span>
+          </div>
+
+          <div class="delivers-item">
+            <svg class="delivers-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 12c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4zm8 0c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4z"/>
+            </svg>
+            <span>Acesso vitalício</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 5 · O QUE VOCÊ RECEBE — pan. Clareza. rail de 6 chips reais. -->
-  <section class="act-delivers" data-sc-act="pan" data-sc-span="4.2" data-sc-drift="#0e0e0e" data-delivers-root>
-    <div data-sc-stage>
-      <div class="delivers-rail" data-sc-pan="0.1">
-        <div class="delivers-heading" data-delivers-item>
-          <h2 class="sc-display delivers-title">O QUE VOCÊ<br>RECEBE NO <span class="is-accent">PROJETO</span></h2>
-        </div>
-
-        <article class="delivers-item" data-delivers-item>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-          <span>Aulas completas em vídeo</span>
-        </article>
-        <article class="delivers-item" data-delivers-item>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 4v2l-7-4-7 4v-2l7-4z"/><path d="M5 9v8h14V9"/><path d="M12 6v3"/></svg>
-          <span>Orientações de execução e estratégia</span>
-        </article>
-        <article class="delivers-item" data-delivers-item>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="10" width="3" height="4" rx="0.5"/><rect x="19" y="10" width="3" height="4" rx="0.5"/><path d="M5 12h14"/></svg>
-          <span>Exercícios selecionados para glúteos</span>
-        </article>
-        <article class="delivers-item" data-delivers-item>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
-          <span>Acesso pelo celular, tablet ou computador</span>
-        </article>
-        <article class="delivers-item" data-delivers-item>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="2" height="3" rx="0.5"/><rect x="6" y="6" width="12" height="14" rx="2"/><path d="M8 10h8"/><path d="M8 13h8"/><path d="M8 16h5"/></svg>
-          <span>Programas de treino organizados</span>
-        </article>
-        <article class="delivers-item" data-delivers-item>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 12c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4zm8 0c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4z"/></svg>
-          <span>Acesso vitalício</span>
-        </article>
-
-        <div class="delivers-note" data-delivers-item>
-          <p class="sc-body">Tudo isso pra você nunca mais improvisar um treino.</p>
-        </div>
+  <section class="final-cta" id="preco">
+    <div class="container">
+      <div class="final-cta-price">
+        <p class="final-cta-label">INVESTIMENTO ÚNICO</p>
+        <p class="final-cta-value">R$ 67<sup>,00</sup></p>
       </div>
-    </div>
-  </section>
 
-  <!-- 6 · CTA FINAL — flow, último ato. Revela tudo junto ao entrar em vista,
-       sem pin/scrub: nada de scroll travado ou preço pingando aos poucos. -->
-  <section id="preco" class="act-final" data-sc-act="flow" data-sc-drift="#0e0e0e">
-    <div class="final-stage" data-sc-spotlight data-sc-in data-sc-stagger="60">
-      <div class="final-inner">
-        <p class="final-label sc-label">Investimento único</p>
-        <p class="final-value sc-display">R$ 67<sup>,00</sup></p>
-
-        <a class="cta final-cta" href="#preco" data-sc-magnet="0.24">
-          Quero meu acesso agora!
-          <span class="cta__icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+      <div class="final-cta-button">
+        <a href="#preco" class="btn-cta">
+          QUERO MEU ACESSO AGORA!
+          <span class="btn-cta-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14"/>
+              <path d="M13 6l6 6-6 6"/>
+            </svg>
           </span>
         </a>
-
-        <div class="final-trust">
-          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg> Compra segura</span>
-          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> Acesso imediato</span>
-          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.35-9-8.5C1.3 8 3 5 6.5 5c2 0 3.5 1.2 5.5 3.5C14 6.2 15.5 5 17.5 5 21 5 22.7 8 21 11.5 19 15.65 12 20 12 20z"/></svg> Satisfação garantida</span>
+        <div class="final-cta-trust">
+          <span>COMPRA SEGURA</span>
+          <span>·</span>
+          <span>ACESSO IMEDIATO</span>
+          <span>·</span>
+          <span>SATISFAÇÃO GARANTIDA</span>
         </div>
+      </div>
 
-        <div class="final-guarantee">
-          <div class="final-badge">
-            <strong>7</strong>
-            <span>Dias de<br>garantia</span>
-          </div>
-          <p>Você tem 7 dias para testar o programa. Se por qualquer motivo não gostar, devolvemos 100% do seu dinheiro.</p>
+      <div class="final-cta-guarantee-wrap">
+        <div class="final-cta-badge">
+          <span class="final-cta-badge-text">GARANTIA</span>
+          <span class="final-cta-badge-number">7</span>
+          <span class="final-cta-badge-text">DIAS</span>
+          <span class="final-cta-badge-text">INCONDICIONAL</span>
         </div>
-
-        <footer class="site-foot">Projeto Glúteo Durinho · Marcel Rassy</footer>
+        <p class="final-cta-guarantee-text">Você tem 7 dias para testar o programa. Se por qualquer motivo não gostar, devolvemos 100% do seu dinheiro.</p>
       </div>
     </div>
   </section>
 
-</main>
+  <script>
+    document.querySelectorAll('.btn-cta').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        posthog.capture('cta_click', { location: btn.closest('.hero') ? 'hero' : 'final_cta' });
+      });
+    });
 
-<script src="scrollcraft.js"></script>
-<script src="page.js"></script>
-<script>ScrollCraft.mount(document.body);</script>
+    var precoSection = document.getElementById('preco');
+    if (precoSection && 'IntersectionObserver' in window) {
+      var seen = false;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && !seen) {
+            seen = true;
+            posthog.capture('pricing_section_view');
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.5 });
+      observer.observe(precoSection);
+    }
+  </script>
+
 </body>
 </html>
